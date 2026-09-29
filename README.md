@@ -167,3 +167,4 @@ flutter run -d chrome          # web
 flutter run -d windows         # desktop
 flutter run -d <android>       # mobile
 
+Builds: flutter build windows --release • flutter build apk --release • flutter build web --release
