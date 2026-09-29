@@ -74,3 +74,65 @@ Generic billing software fails at a repair counter: no job-tracking, no "fits wh
 │ Supabase │ Postgres + Row-Level Security
 │ (cloud sync) │ source of truth across devices
 └───────────────┘
+
+
+### The sync strategy (the heart of ShopOS)
+1. **Local-first:** every read/write hits SQLite — the shop never stops for WiFi.
+2. **Outbox pattern:** mutations are queued locally with `op` + JSON payload, pushed when connectivity returns.
+3. **Pending-guarded pulls:** a table with unpushed local changes is *never* overwritten by a cloud pull → no lost offline work.
+4. **Connectivity gate + auto-heal:** a 4-second probe gates all network calls (silent offline, zero error spam); a 45-second watcher detects reconnect and syncs automatically with a single "Internet back — synced ✔" confirmation.
+5. **Poison-entry handling:** duplicate-key (23505) and stale-FK (23503) outbox entries are detected and dropped safely.
+
+---
+
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Framework | Flutter (Windows / Android / Web from one codebase) |
+| Local DB | Drift (SQLite) with versioned migrations (v1 → v16) |
+| Cloud | Supabase (Postgres, RLS, anon-key auth) |
+| State | Streams (`watch()`) — reactive UI straight from the DB |
+| PDF | `printing` + `share_plus` |
+| Fonts/UI | Google Fonts, custom design system (`product_ui.dart`) |
+| CI of life | Real daily shop usage as the test suite |
+
+---
+
+## 🧠 Hard problems & how they were solved
+
+| Problem | Solution |
+|---|---|
+| **Offline billing without losing data** | Outbox queue + pending-guarded pulls + connectivity gate + auto-heal watcher |
+| **Schema upgrades on already-installed devices** | Drift `MigrationStrategy` with per-version steps (v1→v16), zero data loss across phone/laptop/PC |
+| **"Profit" lying after discounts & freebies** | Redefined profit as *charged − cost*; free giveaways now show as honest losses |
+| **Owner taking stock personally** | `Own` bill type at cost price — real invoice, zero profit impact, clean audit trail (instead of polluting sales with 100% discounts) |
+| **Overselling (billing 11 of 10 in stock)** | Stock caps enforced at add, cart-increment and a final transaction guard |
+| **Negative / over-total discounts** | `digitsOnly` input formatters + live clamp with user feedback |
+| **Search that finds "c21" inside fits-models** | Multi-field haystack + 4-tier ranking + in-text match highlighting |
+| **Double confirmation dialogs** | Traced nested `showDialog` gates; collapsed to a single source of truth |
+| **Flutter Gradle resetting `minSdk` on wrapper upgrades** | Pre-build checklist + pinned wrapper; documented gotcha |
+| **Two devices editing the same invoice** | Server-side archive table (`deleted_invoices`) as void source of truth; retry-queue on pull |
+
+---
+
+## 📸 Screenshots
+
+| Home + Spotlight | Billing | Jobs | Money |
+|---|---|---|---|
+| ![](docs/screenshots/home.png) | ![](docs/screenshots/bill.png) | ![](docs/screenshots/jobs.png) | ![](docs/screenshots/money.png) |
+
+---
+
+## 🎬 Demos & Field Feedback
+
+- **Full product walkthrough:** [docs/demo.mp4](docs/demo.mp4)
+- **Client (shop owner) review after live deployment:** [docs/client-review.mp4](docs/client-review.mp4)
+
+> *"…client quote about the software going here…"*
+> — **Fixology Shop Owner**, daily user since [month/year]
+
+---
+
+## 🗂️ Repository Layout (private production repo)
+
