@@ -120,9 +120,10 @@ Generic billing software fails at a repair counter: no job-tracking, no "fits wh
 
 ## 📸 Screenshots
 
-| Home + Spotlight | Billing | Inventory | Money |
-|---|---|---|---|
-| <img width="1905" height="966" alt="Screenshot 2026-09-29 104853" src="https://github.com/user-attachments/assets/36756b46-94a0-4386-b4be-68d229f0e452" /> | <img width="1914" height="951" alt="Screenshot 2026-09-29 105046" src="https://github.com/user-attachments/assets/970f620f-a95c-4efc-b6aa-6ba86d010b36" /> | <img width="1919" height="971" alt="Screenshot 2026-09-29 105250" src="https://github.com/user-attachments/assets/83f039ee-76aa-4f98-b120-a59f5e891441" /> | <img width="1913" height="972" alt="Screenshot 2026-09-29 105344" src="https://github.com/user-attachments/assets/511bceb7-89a2-4e15-a67b-6b76fc0a5bc9" /> |
+| Home + Spotlight | Billing | Inventory | Money | Admin Menu |
+|---|---|---|---|---|
+| <img width="1905" height="966" alt="Screenshot 2026-09-29 104853" src="https://github.com/user-attachments/assets/36756b46-94a0-4386-b4be-68d229f0e452" /> | <img width="1914" height="951" alt="Screenshot 2026-09-29 105046" src="https://github.com/user-attachments/assets/970f620f-a95c-4efc-b6aa-6ba86d010b36" /> | <img width="1919" height="971" alt="Screenshot 2026-09-29 105250" src="https://github.com/user-attachments/assets/83f039ee-76aa-4f98-b120-a59f5e891441" /> | <img width="1913" height="972" alt="Screenshot 2026-09-29 105344" src="https://github.com/user-attachments/assets/511bceb7-89a2-4e15-a67b-6b76fc0a5bc9" /> | <img width="1897" height="930" alt="Screenshot 2026-09-29 110012" src="https://github.com/user-attachments/assets/aa8aba39-c216-4165-9b6e-f031b671bedc" /> |
+
 
 ---
 
