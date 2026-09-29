@@ -157,19 +157,28 @@ lib/
 git clone <repo>
 cd shopos
 flutter pub get
+```
 
 # .env
+```bash
 SUPABASE_URL=https://xxxx.supabase.co
 SUPABASE_ANON_KEY=xxxx
+```
+
 
 # Run Supabase schema (see docs/schema.sql) then:
+```bash
 flutter run -d chrome          # web
 flutter run -d windows         # desktop
 flutter run -d <android>       # mobile
+```
 
-Builds: flutter build windows --release • flutter build apk --release • flutter build web --release
+Builds: 
+```bash
+flutter build windows --release • flutter build apk --release • flutter build web --release
+```
 
-📄 License & Contact
+## 📄 License & Contact
 Built for and deployed at Fixology — Shop and Beyond.
 Showcase repository; production code lives in a private repo.
 Contact: [your email / LinkedIn / website]
