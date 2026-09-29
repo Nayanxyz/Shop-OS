@@ -136,3 +136,15 @@ Generic billing software fails at a repair counter: no job-tracking, no "fits wh
 
 ## 🗂️ Repository Layout (private production repo)
 
+lib/
+├── core/ # db.dart (Drift schema+migrations), sync.dart (outbox engine),
+│ # auth, bill_pdf, invoice_detail, product_ui (design system)
+├── features/
+│ ├── home/ # Spotlight search, category grid, frequent chips
+│ ├── cart/ # billing engine (sale/repair/credit/own), saved carts
+│ ├── jobs/ # repair job workflow
+│ ├── ops/ # money dashboard, inventory, stock sheet, dues, ledger
+│ ├── admin/ # roles, categories, employees, security
+│ └── history/ # invoice archive, void flow, customers
+└── main.dart # bootstrap: env → Supabase → Drift → app
+
