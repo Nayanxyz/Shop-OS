@@ -159,14 +159,14 @@ cd shopos
 flutter pub get
 ```
 
-# .env
+### .env
 ```bash
 SUPABASE_URL=https://xxxx.supabase.co
 SUPABASE_ANON_KEY=xxxx
 ```
 
 
-# Run Supabase schema (see docs/schema.sql) then:
+### Run Supabase schema (see docs/schema.sql) then:
 ```bash
 flutter run -d chrome          # web
 flutter run -d windows         # desktop
