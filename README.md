@@ -168,3 +168,8 @@ flutter run -d windows         # desktop
 flutter run -d <android>       # mobile
 
 Builds: flutter build windows --release • flutter build apk --release • flutter build web --release
+
+📄 License & Contact
+Built for and deployed at Fixology — Shop and Beyond.
+Showcase repository; production code lives in a private repo.
+Contact: [your email / LinkedIn / website]
