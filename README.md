@@ -58,22 +58,24 @@ Generic billing software fails at a repair counter: no job-tracking, no "fits wh
 
 ## 🏗️ Architecture
 
+```text
 ┌─────────────────────────── Flutter App ───────────────────────────┐
-│ Windows (.exe) Android (.apk) Web (PWA-ready) │
-│ │
-│ UI Layer: Spotlight • Billing • Jobs • Money • Inventory • Admin │
-│ │ │
-│ Drift (SQLite) ◄──────┤ local-first reads/writes │
-│ schema v16, live migrations on every installed device │
-│ │ │
-│ OUTBOX TABLE ◄────────┘ every mutation queued with op+payload │
+│  Windows (.exe)      Android (.apk)      Web (PWA-ready)          │
+│                                                                   │
+│  UI Layer: Spotlight • Billing • Jobs • Money • Inventory • Admin │
+│                        │                                          │
+│  Drift (SQLite) ◄──────┤  local-first reads/writes                │
+│  schema v16, live migrations on every installed device            │
+│                        │                                          │
+│  OUTBOX TABLE ◄────────┘  every mutation queued with op+payload   │
 └───────────────┬───────────────────────────────────────────────────┘
-│ push (when online) / pull (pending-guarded)
-▼
-┌───────────────┐
-│ Supabase │ Postgres + Row-Level Security
-│ (cloud sync) │ source of truth across devices
-└───────────────┘
+                │  push (when online) / pull (pending-guarded)
+                ▼
+        ┌───────────────┐
+        │   Supabase    │  Postgres + Row-Level Security
+        │  (cloud sync) │  source of truth across devices
+        └───────────────┘
+```
 
 
 ### The sync strategy (the heart of ShopOS)
@@ -136,20 +138,19 @@ Generic billing software fails at a repair counter: no job-tracking, no "fits wh
 
 ## 🗂️ Repository Layout (private production repo)
 
+```text
 lib/
-├── core/ # db.dart (Drift schema+migrations), sync.dart (outbox engine),
-│ # auth, bill_pdf, invoice_detail, product_ui (design system)
+├── core/          # db.dart (Drift schema+migrations), sync.dart (outbox engine),
+│                  # auth, bill_pdf, invoice_detail, product_ui (design system)
 ├── features/
-│ ├── home/ # Spotlight search, category grid, frequent chips
-│ ├── cart/ # billing engine (sale/repair/credit/own), saved carts
-│ ├── jobs/ # repair job workflow
-│ ├── ops/ # money dashboard, inventory, stock sheet, dues, ledger
-│ ├── admin/ # roles, categories, employees, security
-│ └── history/ # invoice archive, void flow, customers
-└── main.dart # bootstrap: env → Supabase → Drift → app
-
-
----
+│   ├── home/      # Spotlight search, category grid, frequent chips
+│   ├── cart/      # billing engine (sale/repair/credit/own), saved carts
+│   ├── jobs/      # repair job workflow
+│   ├── ops/       # money dashboard, inventory, stock sheet, dues, ledger
+│   ├── admin/     # roles, categories, employees, security
+│   └── history/   # invoice archive, void flow, customers
+└── main.dart      # bootstrap: env → Supabase → Drift → app
+```
 
 ## 🏁 Getting Started (reference build)
 
@@ -184,5 +185,7 @@ Built for and deployed at Fixology — Shop and Beyond.
 Showcase repository; production code lives in a private repo.
 
 Contact: choudharyji527@gmail.com 
+         
          linkedin.com/in/nayanxyz
+         
          nayanxyz-portfolio.vercel.app
