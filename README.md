@@ -57,3 +57,20 @@ Generic billing software fails at a repair counter: no job-tracking, no "fits wh
 ---
 
 ## 🏗️ Architecture
+
+┌─────────────────────────── Flutter App ───────────────────────────┐
+│ Windows (.exe) Android (.apk) Web (PWA-ready) │
+│ │
+│ UI Layer: Spotlight • Billing • Jobs • Money • Inventory • Admin │
+│ │ │
+│ Drift (SQLite) ◄──────┤ local-first reads/writes │
+│ schema v16, live migrations on every installed device │
+│ │ │
+│ OUTBOX TABLE ◄────────┘ every mutation queued with op+payload │
+└───────────────┬───────────────────────────────────────────────────┘
+│ push (when online) / pull (pending-guarded)
+▼
+┌───────────────┐
+│ Supabase │ Postgres + Row-Level Security
+│ (cloud sync) │ source of truth across devices
+└───────────────┘
