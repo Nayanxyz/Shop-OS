@@ -180,5 +180,9 @@ flutter build windows --release • flutter build apk --release • flutter buil
 
 ## 📄 License & Contact
 Built for and deployed at Fixology — Shop and Beyond.
+
 Showcase repository; production code lives in a private repo.
-Contact: [your email / LinkedIn / website]
+
+Contact: choudharyji527@gmail.com 
+         linkedin.com/in/nayanxyz
+         nayanxyz-portfolio.vercel.app
