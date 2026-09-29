@@ -148,3 +148,22 @@ lib/
 │ └── history/ # invoice archive, void flow, customers
 └── main.dart # bootstrap: env → Supabase → Drift → app
 
+
+---
+
+## 🏁 Getting Started (reference build)
+
+```bash
+git clone <repo>
+cd shopos
+flutter pub get
+
+# .env
+SUPABASE_URL=https://xxxx.supabase.co
+SUPABASE_ANON_KEY=xxxx
+
+# Run Supabase schema (see docs/schema.sql) then:
+flutter run -d chrome          # web
+flutter run -d windows         # desktop
+flutter run -d <android>       # mobile
+
