@@ -10,12 +10,7 @@
 
 ShopOS is a real-world retail operating system running daily at **Fixology**, a mobile parts & repair shop. It handles billing, inventory, repair job tracking, credit (udhaar) ledger, owner analytics and multi-device sync — **with or without internet**.
 
-🎬 **[Watch the full working demo →](docs/demo.mp4)**
-
-
-https://github.com/user-attachments/assets/8415aca5-ecfd-41d4-b2b7-f563d1393a58
-
-
+🎬 **[Watch the full working demo →](fixology_demo.mp4)**
 💬 **[Client review & field test →](docs/client-review.mp4)**
 
 ---
