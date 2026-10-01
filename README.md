@@ -158,33 +158,6 @@ lib/
 └── main.dart      # bootstrap: env → Supabase → Drift → app
 ```
 
-## 🏁 Getting Started (reference build)
-
-```bash
-git clone <repo>
-cd shopos
-flutter pub get
-```
-
-### .env
-```bash
-SUPABASE_URL=https://xxxx.supabase.co
-SUPABASE_ANON_KEY=xxxx
-```
-
-
-### Run Supabase schema (see docs/schema.sql) then:
-```bash
-flutter run -d chrome          # web
-flutter run -d windows         # desktop
-flutter run -d <android>       # mobile
-```
-
-Builds: 
-```bash
-flutter build windows --release • flutter build apk --release • flutter build web --release
-```
-
 ## 📄 License & Contact
 Built for and deployed at Fixology — Shop and Beyond.
 
